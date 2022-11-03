@@ -27,6 +27,12 @@ Após isso voce poderá rodar o projeto apenas usando:
 ```
 Acesse o projeto em: http://localhost
 
+## Login Front-End
+Para realizar o login do front-end na API, alterar o token no arquivo ``resources/js/app.js``
+```
+axios.defaults.headers.common['Authorization'] = '';
+```
+
 ## Documentação Swagger
 http://localhost/api/documentation
 
