@@ -1,0 +1,201 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Mobills API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/register/": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Create an account on application",
+                "operationId": "cc8ce73eafadd27ab81cd60de152c3c1",
+                "parameters": [
+                    {
+                        "name": "symbol",
+                        "in": "query",
+                        "description": "Stocks name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/login/": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Login on applicaton",
+                "operationId": "2bd01ed5095f36bd99dcc82f59c9bef0",
+                "parameters": [
+                    {
+                        "name": "symbol",
+                        "in": "query",
+                        "description": "Stocks name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/stocks/{symbol}": {
+            "get": {
+                "tags": [
+                    "Stocks API"
+                ],
+                "description": "Search Stocks on API provider",
+                "operationId": "25914a76a4244f7b2e88aee320608489",
+                "parameters": [
+                    {
+                        "name": "symbol",
+                        "in": "path",
+                        "description": "Stocks name",
+                        "required": true,
+                        "examples": {
+                            "string": {
+                                "summary": "Netflix Stocks",
+                                "value": "nflx"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "json"
+                                        }
+                                    ]
+                                },
+                                "examples": {
+                                    "json": {
+                                        "summary": "Sucess",
+                                        "value": {
+                                            "data": {
+                                                "company_name": "Netflix Inc.",
+                                                "symbol": "NFLX",
+                                                "latest_price": 273.08
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/stocks/": {
+            "get": {
+                "tags": [
+                    "Stocks"
+                ],
+                "description": "Search Stocks on API provider",
+                "operationId": "c5b49062b2f866d15ce129dcb4fe4600",
+                "parameters": [
+                    {
+                        "name": "symbol",
+                        "in": "query",
+                        "description": "Stocks name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Stocks"
+                ],
+                "description": "Search Stocks on API provider",
+                "operationId": "2793f9a6c20bacfd948a5d1dc474a86d",
+                "parameters": [
+                    {
+                        "name": "symbol",
+                        "in": "query",
+                        "description": "Stocks name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Stocks"
+                ],
+                "description": "Search Stocks on API provider",
+                "operationId": "10986e0f00bcd1d2a8b7dac7566601e0",
+                "parameters": [
+                    {
+                        "name": "symbol",
+                        "in": "query",
+                        "description": "Stocks name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "apiAuth": {
+                "type": "http",
+                "description": "Bearer token",
+                "name": "Token based Based",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
