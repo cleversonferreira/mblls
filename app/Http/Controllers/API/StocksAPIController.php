@@ -6,9 +6,16 @@ use App\Facades\StocksAPI;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\StockResource;
 use Illuminate\Http\Request;
+use App\Services\SearchHistoryService;
 
 class StocksAPIController extends Controller
 {
+    protected $searchHistoryService;
+
+    public function __construct(SearchHistoryService $searchHistoryService)
+    {
+        $this->searchHistoryService = $searchHistoryService;
+    }
 
     /**
      * @OA\Get(
@@ -55,6 +62,9 @@ class StocksAPIController extends Controller
                 'error' => 'Enter a valid stock name',
             ], 400);
         }
+
+        $this->searchHistoryService->run($stock);
+
         return new StockResource($stock);
     }
 }
