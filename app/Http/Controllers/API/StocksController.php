@@ -13,6 +13,7 @@ class StocksController extends BaseController
      *     path="/api/stocks/",
      *     tags={"Stocks"},
      *     description="Search Stocks on API provider",
+     *     security={{ "apiAuth": {} }},
      *     @OA\Parameter(
      *         name="symbol",
      *         in="query",
@@ -44,6 +45,7 @@ class StocksController extends BaseController
      *     path="/api/stocks/",
      *     tags={"Stocks"},
      *     description="Search Stocks on API provider",
+     *     security={{ "apiAuth": {} }},
      *     @OA\Parameter(
      *         name="symbol",
      *         in="query",
@@ -82,6 +84,7 @@ class StocksController extends BaseController
      *     path="/api/stocks/",
      *     tags={"Stocks"},
      *     description="Search Stocks on API provider",
+     *     security={{ "apiAuth": {} }},
      *     @OA\Parameter(
      *         name="symbol",
      *         in="query",
