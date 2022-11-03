@@ -26,7 +26,7 @@ class StocksAPIController extends Controller
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Success",
+     *         description="OK",
      *         @OA\JsonContent(
      *             oneOf={
      *                 @OA\Schema(type="json")
@@ -36,7 +36,13 @@ class StocksAPIController extends Controller
      *     ),
      *     @OA\Response(
      *         response=400,
-     *         description="error"
+     *         description="Bad Request",
+     *         @OA\JsonContent(
+     *             oneOf={
+     *                 @OA\Schema(type="json")
+     *             },
+     *             @OA\Examples(example="json", value={"error": "Enter a valid stock name"}, summary="Error"),
+     *         )
      *     ),
      * )
      */

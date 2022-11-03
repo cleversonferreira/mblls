@@ -12,22 +12,45 @@ class RegisterController extends BaseController
 {
     /**
      * @OA\Post(
-     *     path="/register/",
+     *     path="/api/register/",
      *     tags={"Auth"},
      *     description="Create an account on application",
-     *     @OA\Parameter(
-     *         name="symbol",
-     *         in="query",
-     *         description="Stocks name",
-     *         required=true,
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="c_password",
+     *                     type="string"
+     *                 ),
+     *             )
+     *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="successful",
+     *         description="OK",
+     *         @OA\JsonContent(
+     *             oneOf={
+     *                 @OA\Schema(type="json")
+     *             },
+     *             @OA\Examples(example="json", value={"success": true, "data": {"token": "r6V74GKLmwYzFAbK2DWd31X1LMo8qj","name": "Cleverson"}, "message": "User register successfully"}, summary="Sucess"),
+     *         ),
      *     ),
      *     @OA\Response(
      *         response=400,
-     *         description="error"
+     *         description="Bad Request"
      *     ),
      * )
      */
@@ -55,22 +78,37 @@ class RegisterController extends BaseController
 
     /**
      * @OA\Post(
-     *     path="/login/",
+     *     path="/api/login/",
      *     tags={"Auth"},
      *     description="Login on applicaton",
-     *     @OA\Parameter(
-     *         name="symbol",
-     *         in="query",
-     *         description="Stocks name",
-     *         required=true,
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password",
+     *                     type="string"
+     *                 ),
+     *             )
+     *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="successful",
+     *         description="OK",
+     *         @OA\JsonContent(
+     *             oneOf={
+     *                 @OA\Schema(type="json")
+     *             },
+     *             @OA\Examples(example="json", value={"success": true, "data": {"token": "r6V74GKLmwYzFAbK2DWd31X1LMo8qj","name": "Cleverson"}, "message": "User login successfully"}, summary="Sucess"),
+     *         ),
      *     ),
      *     @OA\Response(
      *         response=400,
-     *         description="error"
+     *         description="Bad Request"
      *     ),
      * )
      */
